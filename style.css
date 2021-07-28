@@ -13,6 +13,7 @@
 body {
   height: 100vh;
   width: 100%;
+  height: 100vh;
 }
 
 li {
@@ -24,17 +25,60 @@ a {
   color: #000;
 }
 
-::-webkit-scrollbar {
-  width: 8px;
+#loader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 150;
+  background: #000;
+  overflow: hidden;
 }
 
-::-webkit-scrollbar-track {
-  background: transparent;
+#loader .moveLeft {
+  -webkit-animation: moveLeft 4s infinite;
+          animation: moveLeft 4s infinite;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  height: 100%;
 }
 
-::-webkit-scrollbar-thumb {
-  background: #ff1921;
-  border-radius: 1rem;
+@-webkit-keyframes moveLeft {
+  from {
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
+  }
+  to {
+    -webkit-transform: translateX(-400%);
+            transform: translateX(-400%);
+  }
+}
+
+@keyframes moveLeft {
+  from {
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
+  }
+  to {
+    -webkit-transform: translateX(-400%);
+            transform: translateX(-400%);
+  }
+}
+
+#loader .moveLeft .loaderBackground {
+  width: 50%;
+  -webkit-box-flex: 0;
+      -ms-flex: none;
+          flex: none;
+  height: 100%;
+  position: relative;
+  top: 0;
+  background: #1a1a1a;
+  -webkit-clip-path: polygon(100% 0%, 75% 50%, 100% 100%, 25% 100%, 0% 50%, 25% 0%);
+          clip-path: polygon(100% 0%, 75% 50%, 100% 100%, 25% 100%, 0% 50%, 25% 0%);
 }
 
 header {
@@ -60,19 +104,25 @@ header nav {
   transition: all 0.3s ease-out;
 }
 
-@media screen and (min-width: 769px) and (max-width: 1024px) {
+@media screen and (min-width: 769px) and (max-width: 900px) {
   header nav {
     padding: 1.15rem 2rem;
   }
 }
 
-@media screen and (min-width: 481px) and (max-width: 768px) {
+@media screen and (min-width: 601px) and (max-width: 768px) {
   header nav {
     padding: 1.15rem 2rem;
   }
 }
 
-@media screen and (min-width: 300px) and (max-width: 480px) {
+@media screen and (min-width: 481px) and (max-width: 600px) {
+  header nav {
+    padding: 1.15rem 1.5rem;
+  }
+}
+
+@media screen and (min-width: 315px) and (max-width: 480px) {
   header nav {
     padding: 1rem;
   }
@@ -81,7 +131,6 @@ header nav {
 header nav h1#logo {
   color: #111;
   font-weight: 600;
-  margin-left: 1rem;
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
 }
@@ -100,19 +149,25 @@ header nav.active {
   transition: all 0.3s;
 }
 
-@media screen and (min-width: 769px) and (max-width: 1024px) {
+@media screen and (min-width: 769px) and (max-width: 900px) {
   header nav.active {
     padding: 0.6rem 2rem;
   }
 }
 
-@media screen and (min-width: 481px) and (max-width: 768px) {
+@media screen and (min-width: 601px) and (max-width: 768px) {
   header nav.active {
     padding: 0.6rem 2rem;
   }
 }
 
-@media screen and (min-width: 300px) and (max-width: 480px) {
+@media screen and (min-width: 481px) and (max-width: 600px) {
+  header nav.active {
+    padding: 0.6rem 1.5rem;
+  }
+}
+
+@media screen and (min-width: 315px) and (max-width: 480px) {
   header nav.active {
     padding: 0.6rem 1rem;
   }
@@ -135,7 +190,7 @@ header nav ul {
   display: flex;
 }
 
-@media screen and (min-width: 315px) and (max-width: 480px) {
+@media screen and (min-width: 315px) and (max-width: 600px) {
   header nav ul {
     position: absolute;
     top: 0;
@@ -173,19 +228,19 @@ header nav ul li {
   margin: 0 1rem;
 }
 
-@media screen and (min-width: 769px) and (max-width: 1024px) {
+@media screen and (min-width: 769px) and (max-width: 900px) {
+  header nav ul li {
+    margin: 0 0.85rem;
+  }
+}
+
+@media screen and (min-width: 601px) and (max-width: 768px) {
   header nav ul li {
     margin: 0 0.75rem;
   }
 }
 
-@media screen and (min-width: 481px) and (max-width: 768px) {
-  header nav ul li {
-    margin: 0 0.75rem;
-  }
-}
-
-@media screen and (min-width: 315px) and (max-width: 480px) {
+@media screen and (min-width: 315px) and (max-width: 600px) {
   header nav ul li {
     margin: 0.75rem 0;
   }
@@ -201,7 +256,7 @@ header nav ul li a {
   transition: all 0.3s ease-out;
 }
 
-@media screen and (min-width: 315px) and (max-width: 480px) {
+@media screen and (min-width: 315px) and (max-width: 600px) {
   header nav ul li a {
     color: #c0c0c0;
   }
@@ -244,7 +299,7 @@ header nav ul li a:hover::before {
 header nav #menu {
   display: none;
   position: relative;
-  margin-right: 1rem;
+  margin-right: 0.5rem;
   background: yellow;
 }
 
@@ -268,7 +323,7 @@ header nav #menu i.show {
   transition: all 0.3s ease-out;
 }
 
-@media screen and (min-width: 315px) and (max-width: 480px) {
+@media screen and (min-width: 315px) and (max-width: 600px) {
   header nav #menu {
     display: block;
     z-index: 1;
@@ -278,6 +333,9 @@ header nav #menu i.show {
 
 main {
   width: 100%;
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
 }
 
 main section {
@@ -315,24 +373,31 @@ main section#home #background {
           box-shadow: inset 0px -30px 30px rgba(0, 0, 0, 0.2);
 }
 
-@media screen and (min-width: 769px) and (max-width: 1024px) {
+@media screen and (min-width: 769px) and (max-width: 900px) {
   main section#home #background {
     right: -4rem;
     width: 65%;
   }
 }
 
-@media screen and (min-width: 481px) and (max-width: 768px) {
+@media screen and (min-width: 601px) and (max-width: 768px) {
+  main section#home #background {
+    right: -5rem;
+    width: 75%;
+  }
+}
+
+@media screen and (min-width: 481px) and (max-width: 600px) {
   main section#home #background {
     right: -6rem;
-    width: 80%;
+    width: 90%;
   }
 }
 
 @media screen and (min-width: 315px) and (max-width: 480px) {
   main section#home #background {
-    right: -8rem;
-    width: 90%;
+    right: -5rem;
+    width: 100%;
   }
 }
 
@@ -344,28 +409,30 @@ main section#home #background img {
 
 main section#home .homeContent {
   position: absolute;
-  margin-top: -6rem;
-  margin-left: 4rem;
+  padding: 4rem;
 }
 
-@media screen and (min-width: 769px) and (max-width: 1024px) {
+@media screen and (min-width: 769px) and (max-width: 900px) {
   main section#home .homeContent {
-    margin-left: 3rem;
-    margin-top: -4.5rem;
+    padding: 4rem;
   }
 }
 
-@media screen and (min-width: 481px) and (max-width: 768px) {
+@media screen and (min-width: 601px) and (max-width: 768px) {
   main section#home .homeContent {
-    margin-left: 3rem;
-    margin-top: -3rem;
+    padding: 2rem;
+  }
+}
+
+@media screen and (min-width: 481px) and (max-width: 600px) {
+  main section#home .homeContent {
+    padding: 1.5rem;
   }
 }
 
 @media screen and (min-width: 315px) and (max-width: 480px) {
   main section#home .homeContent {
-    margin-left: 2rem;
-    margin-top: -2rem;
+    padding: 1rem;
   }
 }
 
@@ -376,21 +443,27 @@ main section#home .homeContent h3 {
   font-size: 1.5rem;
 }
 
-@media screen and (min-width: 769px) and (max-width: 1024px) {
+@media screen and (min-width: 769px) and (max-width: 900px) {
   main section#home .homeContent h3 {
-    font-size: 1.3rem;
+    font-size: 1.425rem;
   }
 }
 
-@media screen and (min-width: 481px) and (max-width: 768px) {
+@media screen and (min-width: 601px) and (max-width: 768px) {
   main section#home .homeContent h3 {
-    font-size: 1.2rem;
+    font-size: 1.35rem;
+  }
+}
+
+@media screen and (min-width: 481px) and (max-width: 600px) {
+  main section#home .homeContent h3 {
+    font-size: 1.25rem;
   }
 }
 
 @media screen and (min-width: 315px) and (max-width: 480px) {
   main section#home .homeContent h3 {
-    font-size: 1rem;
+    font-size: 1.15rem;
   }
 }
 
@@ -402,17 +475,24 @@ main section#home .homeContent h1 {
   line-height: 4.5rem;
 }
 
-@media screen and (min-width: 769px) and (max-width: 1024px) {
+@media screen and (min-width: 769px) and (max-width: 900px) {
   main section#home .homeContent h1 {
     font-size: 3.25rem;
     line-height: 4rem;
   }
 }
 
-@media screen and (min-width: 481px) and (max-width: 768px) {
+@media screen and (min-width: 601px) and (max-width: 768px) {
   main section#home .homeContent h1 {
     font-size: 3rem;
-    line-height: 3.75rem;
+    line-height: 3.8rem;
+  }
+}
+
+@media screen and (min-width: 481px) and (max-width: 600px) {
+  main section#home .homeContent h1 {
+    font-size: 2.75rem;
+    line-height: 3.5rem;
   }
 }
 
@@ -442,7 +522,7 @@ main section#home .homeContent p {
   color: #111;
 }
 
-@media screen and (min-width: 769px) and (max-width: 1024px) {
+@media screen and (min-width: 769px) and (max-width: 900px) {
   main section#home .homeContent p {
     max-width: 450px;
     background: rgba(255, 255, 255, 0.8);
@@ -453,26 +533,39 @@ main section#home .homeContent p {
   }
 }
 
-@media screen and (min-width: 481px) and (max-width: 768px) {
+@media screen and (min-width: 601px) and (max-width: 768px) {
   main section#home .homeContent p {
-    max-width: 375px;
+    max-width: 435px;
     background: rgba(255, 255, 255, 0.8);
-    -webkit-box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.15);
-            box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.15);
+    -webkit-box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
+            box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
     border-radius: 1rem;
-    padding: 1rem 2rem;
+    padding: 1.5rem 2rem;
+  }
+}
+
+@media screen and (min-width: 481px) and (max-width: 600px) {
+  main section#home .homeContent p {
+    max-width: 400px;
+    background: rgba(255, 255, 255, 0.8);
+    -webkit-box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
+            box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
+    border-radius: 1rem;
+    padding: 1.5rem;
+    font-size: 1rem;
   }
 }
 
 @media screen and (min-width: 315px) and (max-width: 480px) {
   main section#home .homeContent p {
-    max-width: 315px;
+    max-width: 100%;
     background: rgba(255, 255, 255, 0.8);
-    -webkit-box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.15);
-            box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.15);
+    -webkit-box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
+            box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
     border-radius: 1rem;
     padding: 1rem;
     font-size: 0.9rem;
+    line-height: 1.3rem;
   }
 }
 
@@ -480,21 +573,27 @@ main section#about {
   padding: 5rem 4rem;
 }
 
-@media screen and (min-width: 769px) and (max-width: 1024px) {
+@media screen and (min-width: 769px) and (max-width: 900px) {
   main section#about {
     padding: 5rem 3rem;
   }
 }
 
-@media screen and (min-width: 481px) and (max-width: 768px) {
+@media screen and (min-width: 601px) and (max-width: 768px) {
   main section#about {
-    padding: 5rem 3rem;
+    padding: 5rem 2rem;
+  }
+}
+
+@media screen and (min-width: 481px) and (max-width: 600px) {
+  main section#about {
+    padding: 5rem 1.5rem;
   }
 }
 
 @media screen and (min-width: 315px) and (max-width: 480px) {
   main section#about {
-    padding: 5rem 2rem;
+    padding: 5rem 1rem;
   }
 }
 
@@ -503,12 +602,15 @@ main section#about .aboutContent {
   display: grid;
   -ms-grid-columns: (1fr)[3];
       grid-template-columns: repeat(3, 1fr);
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
   -webkit-column-gap: 50px;
           column-gap: 50px;
   margin-bottom: 2rem;
 }
 
-@media screen and (min-width: 769px) and (max-width: 1024px) {
+@media screen and (min-width: 769px) and (max-width: 900px) {
   main section#about .aboutContent {
     -ms-grid-columns: (1fr)[2];
         grid-template-columns: repeat(2, 1fr);
@@ -516,7 +618,15 @@ main section#about .aboutContent {
   }
 }
 
-@media screen and (min-width: 481px) and (max-width: 768px) {
+@media screen and (min-width: 601px) and (max-width: 768px) {
+  main section#about .aboutContent {
+    -ms-grid-columns: (1fr)[2];
+        grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+  }
+}
+
+@media screen and (min-width: 481px) and (max-width: 600px) {
   main section#about .aboutContent {
     -ms-grid-columns: (1fr)[1];
         grid-template-columns: repeat(1, 1fr);
@@ -534,6 +644,13 @@ main section#about .aboutContent {
 
 main section#about .aboutContent article {
   position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   padding: 2rem;
   background: rgba(0, 0, 0, 0.02);
   -webkit-backdrop-filter: blur(10px);
@@ -543,36 +660,57 @@ main section#about .aboutContent article {
           box-shadow: 3px 3px 7px rgba(0, 0, 0, 0.15);
 }
 
+@media screen and (min-width: 601px) and (max-width: 768px) {
+  main section#about .aboutContent article {
+    padding: 1.5rem;
+  }
+}
+
+@media screen and (min-width: 481px) and (max-width: 600px) {
+  main section#about .aboutContent article {
+    padding: 1.5rem;
+  }
+}
+
+@media screen and (min-width: 315px) and (max-width: 480px) {
+  main section#about .aboutContent article {
+    padding: 1rem;
+  }
+}
+
 main section#about .aboutContent article h2 {
-  position: absolute;
-  top: 1rem;
   font-family: poppins;
   font-size: 2.5rem;
   font-weight: 900;
   color: rgba(0, 0, 0, 0.15);
+  margin-bottom: 2rem;
 }
 
-@media screen and (min-width: 769px) and (max-width: 1024px) {
+@media screen and (min-width: 769px) and (max-width: 900px) {
   main section#about .aboutContent article h2 {
-    font-size: 2.1rem;
+    font-size: 2.2rem;
   }
 }
 
-@media screen and (min-width: 481px) and (max-width: 768px) {
+@media screen and (min-width: 601px) and (max-width: 768px) {
   main section#about .aboutContent article h2 {
-    font-size: 1.95rem;
+    font-size: 1.8rem;
+    margin-bottom: 2rem;
+  }
+}
+
+@media screen and (min-width: 481px) and (max-width: 600px) {
+  main section#about .aboutContent article h2 {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
   }
 }
 
 @media screen and (min-width: 315px) and (max-width: 480px) {
   main section#about .aboutContent article h2 {
     font-size: 1.8rem;
+    margin-bottom: 1rem;
   }
-}
-
-main section#about .aboutContent article .cardContent {
-  margin-top: 3.5rem;
-  margin-bottom: 3rem;
 }
 
 main section#about .aboutContent article .cardContent p {
@@ -582,16 +720,43 @@ main section#about .aboutContent article .cardContent p {
   line-height: 1.5rem;
 }
 
+@media screen and (min-width: 481px) and (max-width: 600px) {
+  main section#about .aboutContent article .cardContent p {
+    font-size: 1rem;
+  }
+}
+
+@media screen and (min-width: 315px) and (max-width: 480px) {
+  main section#about .aboutContent article .cardContent p {
+    font-size: 0.9rem;
+    line-height: 1.3rem;
+  }
+}
+
 main section#about .aboutContent article .cardContent p strong {
   font-weight: 600;
 }
 
 main section#about .aboutContent article i {
-  position: absolute;
-  bottom: 1rem;
-  right: 1rem;
   font-size: 4rem;
+  -ms-flex-item-align: end;
+      align-self: flex-end;
   color: rgba(0, 0, 0, 0.04);
+  margin-top: 2rem;
+}
+
+@media screen and (min-width: 481px) and (max-width: 600px) {
+  main section#about .aboutContent article i {
+    font-size: 3rem;
+    margin-top: 1.5rem;
+  }
+}
+
+@media screen and (min-width: 315px) and (max-width: 480px) {
+  main section#about .aboutContent article i {
+    font-size: 2.5rem;
+    margin-top: 1rem;
+  }
 }
 
 main section#about #skills {
@@ -606,7 +771,7 @@ main section#about #skills h1 {
 
 @media screen and (min-width: 315px) and (max-width: 480px) {
   main section#about #skills h1 {
-    font-size: 1.5rem;
+    font-size: 1.35rem;
   }
 }
 
@@ -620,15 +785,21 @@ main section#about #skills .skillsContainer {
   row-gap: 30px;
 }
 
-@media screen and (min-width: 769px) and (max-width: 1024px) {
+@media screen and (min-width: 769px) and (max-width: 900px) {
   main section#about #skills .skillsContainer {
-    -ms-grid-columns: 1fr;
-        grid-template-columns: 1fr;
     row-gap: 30px;
   }
 }
 
-@media screen and (min-width: 481px) and (max-width: 768px) {
+@media screen and (min-width: 601px) and (max-width: 768px) {
+  main section#about #skills .skillsContainer {
+    -ms-grid-columns: 1fr;
+        grid-template-columns: 1fr;
+    gap: 20px;
+  }
+}
+
+@media screen and (min-width: 481px) and (max-width: 600px) {
   main section#about #skills .skillsContainer {
     -ms-grid-columns: 1fr;
         grid-template-columns: 1fr;
@@ -648,6 +819,18 @@ main section#about #skills .skillsContainer article.skill {
   padding: 1rem 2rem;
   border-radius: 0.75rem;
   background: rgba(0, 0, 0, 0.03);
+}
+
+@media screen and (min-width: 601px) and (max-width: 768px) {
+  main section#about #skills .skillsContainer article.skill {
+    padding: 1rem;
+  }
+}
+
+@media screen and (min-width: 315px) and (max-width: 480px) {
+  main section#about #skills .skillsContainer article.skill {
+    padding: 1rem;
+  }
 }
 
 main section#about #skills .skillsContainer article.skill .skillTitle {
@@ -676,6 +859,13 @@ main section#about #skills .skillsContainer article.skill .skillTitle div img {
   height: 2rem;
 }
 
+@media screen and (min-width: 315px) and (max-width: 480px) {
+  main section#about #skills .skillsContainer article.skill .skillTitle div img {
+    height: 1.5rem;
+    width: 1.5rem;
+  }
+}
+
 main section#about #skills .skillsContainer article.skill .skillTitle div span {
   font-weight: 600;
   letter-spacing: 1px;
@@ -685,14 +875,19 @@ main section#about #skills .skillsContainer article.skill .progressBox {
   margin-top: 1rem;
   width: 100%;
   height: 0.75rem;
-  border-radius: 1rem;
+  border-radius: 2rem;
   background: rgba(0, 0, 0, 0.05);
+}
+
+@media screen and (min-width: 315px) and (max-width: 480px) {
+  main section#about #skills .skillsContainer article.skill .progressBox {
+    height: 0.5rem;
+  }
 }
 
 main section#about #skills .skillsContainer article.skill .progressBox .progressBar {
   height: 100%;
-  width: 50%;
-  border-radius: 1rem;
+  border-radius: 2rem;
 }
 
 main section#about #skills .skillsContainer article:nth-child(1) .progressBar {
@@ -728,7 +923,7 @@ main section#work {
   display: flex;
 }
 
-@media screen and (min-width: 769px) and (max-width: 1024px) {
+@media screen and (min-width: 769px) and (max-width: 900px) {
   main section#work {
     padding: 5rem 3rem;
     -webkit-box-orient: vertical;
@@ -738,9 +933,19 @@ main section#work {
   }
 }
 
-@media screen and (min-width: 481px) and (max-width: 768px) {
+@media screen and (min-width: 601px) and (max-width: 768px) {
   main section#work {
-    padding: 5rem 3rem;
+    padding: 5rem 2rem;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+}
+
+@media screen and (min-width: 481px) and (max-width: 600px) {
+  main section#work {
+    padding: 5rem 1.5rem;
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
         -ms-flex-direction: column;
@@ -750,7 +955,7 @@ main section#work {
 
 @media screen and (min-width: 315px) and (max-width: 480px) {
   main section#work {
-    padding: 5rem 2rem;
+    padding: 5rem 1rem;
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
         -ms-flex-direction: column;
@@ -772,13 +977,19 @@ main section#work #workContainer {
           align-items: flex-start;
 }
 
-@media screen and (min-width: 769px) and (max-width: 1024px) {
+@media screen and (min-width: 769px) and (max-width: 900px) {
   main section#work #workContainer {
     width: 100%;
   }
 }
 
-@media screen and (min-width: 481px) and (max-width: 768px) {
+@media screen and (min-width: 601px) and (max-width: 768px) {
+  main section#work #workContainer {
+    width: 100%;
+  }
+}
+
+@media screen and (min-width: 481px) and (max-width: 600px) {
   main section#work #workContainer {
     width: 100%;
   }
@@ -796,7 +1007,18 @@ main section#work #workContainer h2 {
   margin-bottom: 1.5rem;
   color: #111;
   width: 100%;
-  text-align: left;
+}
+
+@media screen and (min-width: 481px) and (max-width: 600px) {
+  main section#work #workContainer h2 {
+    font-size: 1.5rem;
+  }
+}
+
+@media screen and (min-width: 315px) and (max-width: 480px) {
+  main section#work #workContainer h2 {
+    font-size: 1.2rem;
+  }
 }
 
 main section#work #workContainer h2 span {
@@ -833,18 +1055,21 @@ main section#work #workContainer article .date {
   width: 20%;
   font-family: poppins;
   text-align: end;
-  padding: 1rem 2rem;
+  padding-right: 2rem;
+  padding-top: 2rem;
 }
 
-@media screen and (min-width: 481px) and (max-width: 768px) {
+@media screen and (min-width: 481px) and (max-width: 600px) {
   main section#work #workContainer article .date {
     width: 30%;
+    padding: 1.5rem;
   }
 }
 
 @media screen and (min-width: 315px) and (max-width: 480px) {
   main section#work #workContainer article .date {
     width: 40%;
+    padding: 1rem;
     text-align: left;
   }
 }
@@ -873,20 +1098,25 @@ main section#work #workContainer article .date.present::before {
 
 main section#work #workContainer article .leftContent {
   width: 80%;
-  padding: 1rem 2rem;
+  padding-top: 2rem;
+  padding-left: 2rem;
   border-left: 2px solid #c0c0c0;
   font-family: montserrat;
 }
 
-@media screen and (min-width: 481px) and (max-width: 768px) {
+@media screen and (min-width: 481px) and (max-width: 600px) {
   main section#work #workContainer article .leftContent {
     width: 70%;
+    padding-top: 1.5rem;
+    padding-left: 1.5rem;
   }
 }
 
 @media screen and (min-width: 315px) and (max-width: 480px) {
   main section#work #workContainer article .leftContent {
-    width: 60%;
+    width: 100%;
+    padding-left: 1.5rem;
+    padding-top: 1rem;
   }
 }
 
@@ -900,13 +1130,13 @@ main section#work #workContainer article .leftContent p {
   width: 80%;
 }
 
-@media screen and (min-width: 769px) and (max-width: 1024px) {
+@media screen and (min-width: 769px) and (max-width: 900px) {
   main section#work #workContainer article .leftContent p {
     width: 90%;
   }
 }
 
-@media screen and (min-width: 481px) and (max-width: 768px) {
+@media screen and (min-width: 481px) and (max-width: 600px) {
   main section#work #workContainer article .leftContent p {
     width: 100%;
   }
@@ -915,6 +1145,7 @@ main section#work #workContainer article .leftContent p {
 @media screen and (min-width: 315px) and (max-width: 480px) {
   main section#work #workContainer article .leftContent p {
     width: 100%;
+    font-size: 0.9rem;
   }
 }
 
@@ -941,7 +1172,7 @@ main section#work .latestWork {
   gap: 30px;
 }
 
-@media screen and (min-width: 769px) and (max-width: 1024px) {
+@media screen and (min-width: 769px) and (max-width: 900px) {
   main section#work .latestWork {
     width: 100%;
     -webkit-box-orient: horizontal;
@@ -951,7 +1182,17 @@ main section#work .latestWork {
   }
 }
 
-@media screen and (min-width: 481px) and (max-width: 768px) {
+@media screen and (min-width: 601px) and (max-width: 768px) {
+  main section#work .latestWork {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    width: 100%;
+  }
+}
+
+@media screen and (min-width: 481px) and (max-width: 600px) {
   main section#work .latestWork {
     width: 100%;
   }
@@ -971,6 +1212,12 @@ main section#work .latestWork .latestWorkContent {
   background: rgba(0, 0, 0, 0.03);
   border-radius: 1rem;
   width: 100%;
+}
+
+@media screen and (min-width: 315px) and (max-width: 480px) {
+  main section#work .latestWork .latestWorkContent {
+    padding: 1rem;
+  }
 }
 
 main section#work .latestWork .latestWorkContent h3 {
@@ -1005,13 +1252,19 @@ main section#templates {
   padding: 5rem 3rem;
 }
 
-@media screen and (min-width: 769px) and (max-width: 1024px) {
+@media screen and (min-width: 769px) and (max-width: 900px) {
   main section#templates {
     padding: 5rem 2rem;
   }
 }
 
-@media screen and (min-width: 481px) and (max-width: 768px) {
+@media screen and (min-width: 601px) and (max-width: 768px) {
+  main section#templates {
+    padding: 5rem 2rem;
+  }
+}
+
+@media screen and (min-width: 481px) and (max-width: 600px) {
   main section#templates {
     padding: 5rem 2rem;
   }
@@ -1027,12 +1280,16 @@ main section#templates h1 {
   font-size: 2rem;
   font-weight: 800;
   margin-bottom: 1rem;
-  margin-left: 1rem;
 }
 
 main section#templates p {
   margin-bottom: 1.5rem;
-  margin-left: 1rem;
+}
+
+@media screen and (min-width: 315px) and (max-width: 480px) {
+  main section#templates p {
+    font-size: 0.9rem;
+  }
 }
 
 main section#templates .images {
@@ -1044,7 +1301,7 @@ main section#templates .images {
   gap: 10px;
 }
 
-@media screen and (min-width: 481px) and (max-width: 768px) {
+@media screen and (min-width: 481px) and (max-width: 600px) {
   main section#templates .images {
     -ms-grid-columns: (1fr)[1];
         grid-template-columns: repeat(1, 1fr);
@@ -1076,21 +1333,30 @@ main section#contact {
   gap: 150px;
 }
 
-@media screen and (min-width: 769px) and (max-width: 1024px) {
+@media screen and (min-width: 769px) and (max-width: 900px) {
   main section#contact {
     gap: 100px;
   }
 }
 
-@media screen and (min-width: 481px) and (max-width: 768px) {
+@media screen and (min-width: 601px) and (max-width: 768px) {
+  main section#contact {
+    gap: 70px;
+    padding: 5rem 2rem;
+  }
+}
+
+@media screen and (min-width: 481px) and (max-width: 600px) {
   main section#contact {
     gap: 75px;
+    padding: 5rem 1.5rem;
   }
 }
 
 @media screen and (min-width: 315px) and (max-width: 480px) {
   main section#contact {
     gap: 50px;
+    padding: 5rem 1rem;
   }
 }
 
@@ -1107,7 +1373,7 @@ main section#contact .messageContainer {
   gap: 50px;
 }
 
-@media screen and (min-width: 769px) and (max-width: 1024px) {
+@media screen and (min-width: 769px) and (max-width: 900px) {
   main section#contact .messageContainer {
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
@@ -1116,7 +1382,16 @@ main section#contact .messageContainer {
   }
 }
 
-@media screen and (min-width: 481px) and (max-width: 768px) {
+@media screen and (min-width: 601px) and (max-width: 768px) {
+  main section#contact .messageContainer {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+}
+
+@media screen and (min-width: 481px) and (max-width: 600px) {
   main section#contact .messageContainer {
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
@@ -1131,6 +1406,7 @@ main section#contact .messageContainer {
     -webkit-box-direction: normal;
         -ms-flex-direction: column;
             flex-direction: column;
+    gap: 30px;
   }
 }
 
@@ -1144,13 +1420,13 @@ main section#contact .messageContainer h1 {
   width: 600px;
 }
 
-@media screen and (min-width: 769px) and (max-width: 1024px) {
+@media screen and (min-width: 769px) and (max-width: 900px) {
   main section#contact .messageContainer h1 {
     font-size: 2.5rem;
   }
 }
 
-@media screen and (min-width: 481px) and (max-width: 768px) {
+@media screen and (min-width: 481px) and (max-width: 600px) {
   main section#contact .messageContainer h1 {
     font-size: 2.25rem;
   }
@@ -1158,7 +1434,7 @@ main section#contact .messageContainer h1 {
 
 @media screen and (min-width: 315px) and (max-width: 480px) {
   main section#contact .messageContainer h1 {
-    font-size: 2rem;
+    font-size: 1.7rem;
   }
 }
 
@@ -1176,21 +1452,21 @@ main section#contact .messageContainer #form {
   width: 400px;
 }
 
-@media screen and (min-width: 769px) and (max-width: 1024px) {
+@media screen and (min-width: 769px) and (max-width: 900px) {
   main section#contact .messageContainer #form {
     width: 375px;
   }
 }
 
-@media screen and (min-width: 481px) and (max-width: 768px) {
+@media screen and (min-width: 481px) and (max-width: 600px) {
   main section#contact .messageContainer #form {
-    width: 350px;
+    width: 400px;
   }
 }
 
 @media screen and (min-width: 315px) and (max-width: 480px) {
   main section#contact .messageContainer #form {
-    width: 315px;
+    width: 95%;
   }
 }
 
@@ -1203,6 +1479,12 @@ main section#contact .messageContainer #form p {
   font-weight: 600;
   margin-bottom: 1rem;
   color: gray;
+}
+
+@media screen and (min-width: 315px) and (max-width: 480px) {
+  main section#contact .messageContainer #form p {
+    font-size: 1.1rem;
+  }
 }
 
 main section#contact .messageContainer #form input {
@@ -1296,19 +1578,25 @@ main section#contact #socialLinks ul li {
   margin: 0 1.25rem;
 }
 
-@media screen and (min-width: 769px) and (max-width: 1024px) {
+@media screen and (min-width: 769px) and (max-width: 900px) {
   main section#contact #socialLinks ul li {
     margin: 0 1rem;
   }
 }
 
-@media screen and (min-width: 481px) and (max-width: 768px) {
+@media screen and (min-width: 481px) and (max-width: 600px) {
   main section#contact #socialLinks ul li {
     margin: 0 0.7rem;
   }
 }
 
-@media screen and (min-width: 315px) and (max-width: 480px) {
+@media screen and (min-width: 315px) and (max-width: 400px) {
+  main section#contact #socialLinks ul li {
+    margin: 0 0.25rem;
+  }
+}
+
+@media screen and (min-width: 401px) and (max-width: 480px) {
   main section#contact #socialLinks ul li {
     margin: 0 0.5rem;
   }
@@ -1358,7 +1646,7 @@ main section#contact #socialLinks ul li a {
   transition: all 0.3s ease-out;
 }
 
-@media screen and (min-width: 769px) and (max-width: 1024px) {
+@media screen and (min-width: 769px) and (max-width: 900px) {
   main section#contact #socialLinks ul li a {
     font-size: 1.75rem;
     height: 50px;
@@ -1366,7 +1654,7 @@ main section#contact #socialLinks ul li a {
   }
 }
 
-@media screen and (min-width: 481px) and (max-width: 768px) {
+@media screen and (min-width: 481px) and (max-width: 600px) {
   main section#contact #socialLinks ul li a {
     font-size: 1.5rem;
     height: 45px;

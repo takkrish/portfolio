@@ -33,6 +33,12 @@ listItems.forEach((listitem) => {
 
 // JQUERY
 
+$(window).on('load', function () {
+	setTimeout(function () {
+		$('#loader').fadeOut(500);
+	}, 500);
+});
+
 $(document).ready(function () {
 	// SMOOTH SCROLL
 	$('nav a').click(function (e) {
