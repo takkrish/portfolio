@@ -1,13 +1,13 @@
-// // PLAIN JAVASCRIPT
+// PLAIN JAVASCRIPT
 
-// const skills = document.querySelectorAll('article.skill');
+const skills = document.querySelectorAll('article.skill');
 
-// skills.forEach((skill) => {
-// 	const percetage = skill.querySelector('.percentage').innerHTML,
-// 		progressBar = skill.querySelector('.progressBar');
+skills.forEach((skill) => {
+	const percetage = skill.querySelector('.percentage').innerHTML,
+		progressBar = skill.querySelector('.progressBar');
 
-// 	progressBar.style.width = percetage;
-// });
+	progressBar.style.width = percetage;
+});
 
 const menuIcon = document.querySelector('#menu');
 const ul = document.querySelector('header nav ul');
@@ -67,13 +67,6 @@ $(document).ready(function () {
 			}
 		});
 	});
-
-	// PROGRESSBAR
-
-	// $('article.skill').each(function () {
-	// 	const percentage = $('.percentage').text();
-	// 	const progressBar = $('.progressBar').css('width', percentage);
-	// });
 
 	// EMAIL ME
 
