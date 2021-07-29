@@ -1318,7 +1318,7 @@ main section#work .latestWork .latestWorkContent .images img#nodejs {
 
 main section#templates {
   font-family: poppins;
-  padding: 5rem 3rem;
+  padding: 5rem 4rem;
 }
 
 @media screen and (min-width: 769px) and (max-width: 900px) {
