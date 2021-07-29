@@ -1,4 +1,4 @@
-// PLAIN JAVASCRIPT
+// VANILLA JAVASCRIPT
 
 const skills = document.querySelectorAll('article.skill');
 
@@ -35,8 +35,11 @@ listItems.forEach((listitem) => {
 
 $(window).on('load', function () {
 	setTimeout(function () {
-		$('#loader').fadeOut(500);
-	}, 500);
+		$('#loader').fadeOut(800);
+		setTimeout(() => {
+			$('#loader .loaderBackground').css('animation', 'none');
+		}, 1000);
+	}, 2000);
 });
 
 $(document).ready(function () {
@@ -58,8 +61,10 @@ $(document).ready(function () {
 
 	$(window).scroll(function () {
 		if (window.scrollY > 80) {
+			$('header').addClass('active');
 			$('nav').addClass('active');
 		} else {
+			$('header').removeClass('active');
 			$('nav').removeClass('active');
 		}
 

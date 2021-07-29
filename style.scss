@@ -6,10 +6,23 @@
 	padding: 0;
 	box-sizing: border-box;
 }
+html {
+	@media screen and (min-width: '1440px') {
+		width: 100%;
+		height: 100%;
+		display: flex;
+		justify-content: center;
+	}
+}
 body {
 	height: 100vh;
 	width: 100%;
 	height: 100vh;
+
+	@media screen and (min-width: '1440px') {
+		width: 1440px;
+		height: 100%;
+	}
 }
 li {
 	list-style: none;
@@ -46,36 +59,30 @@ $silver: #c0c0c0;
 	z-index: 150;
 	background: #000;
 	overflow: hidden;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 
-	.moveLeft {
-		animation: moveLeft 4s infinite;
-		display: flex;
-		width: 100%;
-		height: 100%;
+	.loaderBackground {
+		position: absolute;
+		flex: none;
+		width: 100px;
+		height: 100px;
+		border-radius: 50%;
+		background: $white;
+		animation: waves 2.5s infinite;
+		opacity: 0.5;
+		transform: scale(0);
+		animation-delay: calc((var(--i) * 0.5s));
 
-		@keyframes moveLeft {
+		@keyframes waves {
 			from {
-				transform: translateX(0);
+				transform: scale(0);
 			}
 			to {
-				transform: translateX(-400%);
+				transform: scale(3);
+				opacity: 0;
 			}
-		}
-		.loaderBackground {
-			width: 50%;
-			flex: none;
-			height: 100%;
-			position: relative;
-			top: 0;
-			background: $midBlack;
-			clip-path: polygon(
-				100% 0%,
-				75% 50%,
-				100% 100%,
-				25% 100%,
-				0% 50%,
-				25% 0%
-			);
 		}
 	}
 }
@@ -88,17 +95,29 @@ header {
 	left: 0;
 	width: 100%;
 	z-index: 100;
+	transition: all 0.3s ease-out;
+
+	&.active {
+		background: $white;
+		box-shadow: 0 2px 7px rgba(0, 0, 0, 0.15);
+		transition: all 0.3s ease-out;
+	}
 
 	nav {
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
-		padding: 1.25rem 3rem;
+		padding: 1.25rem 4rem;
 		transition: all 0.3s ease-out;
 
 		// 1025px - 1200px
 
-		// 901px - 1024px
+		@media screen and (min-width: '1440px') {
+			width: 1440px;
+			position: relative;
+			left: 50%;
+			transform: translateX(-50%);
+		}
 
 		@media screen and (min-width: '769px') and (max-width: '900px') {
 			padding: 1.15rem 2rem;
@@ -127,10 +146,8 @@ header {
 		}
 
 		&.active {
-			background: $white;
-			padding: 0.75rem 3rem;
-			box-shadow: 0 2px 7px rgba(0, 0, 0, 0.15);
 			transition: all 0.3s;
+			padding: 0.75rem 4rem;
 
 			@media screen and (min-width: '769px') and (max-width: '900px') {
 				padding: 0.6rem 2rem;
@@ -310,6 +327,11 @@ main {
 				transition: all 0.3s;
 				box-shadow: inset 0px -30px 30px rgba(0, 0, 0, 0.2);
 
+				@media screen and (min-width: '901px') and (max-width: '1024px') {
+					width: 70%;
+					right: -7rem;
+				}
+
 				@media screen and (min-width: '769px') and (max-width: '900px') {
 					right: -4rem;
 					width: 65%;
@@ -422,6 +444,14 @@ main {
 					margin-top: 2rem;
 					color: $black;
 
+					@media screen and (min-width: '901px') and (max-width: '1024px') {
+						max-width: 500px;
+						background: rgba(255, 255, 255, 0.8);
+						box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.15);
+						border-radius: 1rem;
+						padding: 1rem 2rem;
+					}
+
 					@media screen and (min-width: '769px') and (max-width: '900px') {
 						max-width: 450px;
 						background: rgba(255, 255, 255, 0.8);
@@ -484,6 +514,10 @@ main {
 				column-gap: 50px;
 				margin-bottom: 2rem;
 
+				@media screen and (min-width: '901px') and (max-width: '1024px') {
+					grid-template-columns: repeat(2, 1fr);
+					gap: 30px;
+				}
 				@media screen and (min-width: '769px') and (max-width: '900px') {
 					grid-template-columns: repeat(2, 1fr);
 					gap: 30px;
