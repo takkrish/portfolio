@@ -1749,6 +1749,7 @@ main section#contact #socialLinks ul li a {
   border-radius: 50%;
   -webkit-transition: all 0.3s ease-out;
   transition: all 0.3s ease-out;
+  cursor: pointer;
 }
 
 @media screen and (min-width: 769px) and (max-width: 900px) {
