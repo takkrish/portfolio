@@ -671,6 +671,14 @@ main section#about .aboutContent {
   margin-bottom: 2rem;
 }
 
+@media screen and (min-width: 1025px) and (max-width: 1280px) {
+  main section#about .aboutContent {
+    -ms-grid-columns: (1fr)[2];
+        grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+  }
+}
+
 @media screen and (min-width: 901px) and (max-width: 1024px) {
   main section#about .aboutContent {
     -ms-grid-columns: (1fr)[2];
@@ -681,16 +689,16 @@ main section#about .aboutContent {
 
 @media screen and (min-width: 769px) and (max-width: 900px) {
   main section#about .aboutContent {
-    -ms-grid-columns: (1fr)[2];
-        grid-template-columns: repeat(2, 1fr);
+    -ms-grid-columns: (1fr)[1];
+        grid-template-columns: repeat(1, 1fr);
     gap: 30px;
   }
 }
 
 @media screen and (min-width: 601px) and (max-width: 768px) {
   main section#about .aboutContent {
-    -ms-grid-columns: (1fr)[2];
-        grid-template-columns: repeat(2, 1fr);
+    -ms-grid-columns: (1fr)[1];
+        grid-template-columns: repeat(1, 1fr);
     gap: 30px;
   }
 }
@@ -729,9 +737,20 @@ main section#about .aboutContent article {
           box-shadow: 3px 3px 7px rgba(0, 0, 0, 0.15);
 }
 
+@media screen and (min-width: 769px) and (max-width: 900px) {
+  main section#about .aboutContent article {
+    width: 80%;
+    -ms-grid-column-align: center;
+        justify-self: center;
+  }
+}
+
 @media screen and (min-width: 601px) and (max-width: 768px) {
   main section#about .aboutContent article {
     padding: 1.5rem;
+    width: 90%;
+    -ms-grid-column-align: center;
+        justify-self: center;
   }
 }
 
@@ -856,7 +875,9 @@ main section#about #skills .skillsContainer {
 
 @media screen and (min-width: 769px) and (max-width: 900px) {
   main section#about #skills .skillsContainer {
-    row-gap: 30px;
+    -webkit-column-gap: 30px;
+            column-gap: 30px;
+    row-gap: 20px;
   }
 }
 
@@ -893,6 +914,9 @@ main section#about #skills .skillsContainer article.skill {
 @media screen and (min-width: 601px) and (max-width: 768px) {
   main section#about #skills .skillsContainer article.skill {
     padding: 1rem;
+    width: 80%;
+    -ms-grid-column-align: center;
+        justify-self: center;
   }
 }
 
@@ -1252,11 +1276,10 @@ main section#work .latestWork {
 
 @media screen and (min-width: 601px) and (max-width: 768px) {
   main section#work .latestWork {
-    -webkit-box-orient: horizontal;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: row;
-            flex-direction: row;
-    width: 100%;
+    -ms-flex-item-align: center;
+        -ms-grid-row-align: center;
+        align-self: center;
+    width: 85%;
   }
 }
 
@@ -1369,6 +1392,14 @@ main section#templates .images {
   gap: 10px;
 }
 
+@media screen and (min-width: 601px) and (max-width: 768px) {
+  main section#templates .images {
+    -ms-grid-columns: (1fr)[1];
+        grid-template-columns: repeat(1, 1fr);
+    gap: 30px;
+  }
+}
+
 @media screen and (min-width: 481px) and (max-width: 600px) {
   main section#templates .images {
     -ms-grid-columns: (1fr)[1];
@@ -1387,6 +1418,12 @@ main section#templates .images {
 
 main section#templates .images img {
   width: 100%;
+}
+
+@media screen and (min-width: 601px) and (max-width: 768px) {
+  main section#templates .images img {
+    width: 80%;
+  }
 }
 
 main section#contact {
