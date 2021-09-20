@@ -104,6 +104,7 @@ header {
 	}
 
 	nav {
+		margin: 0 auto;
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
@@ -114,9 +115,6 @@ header {
 
 		@media screen and (min-width: '1440px') {
 			width: 1440px;
-			position: relative;
-			left: 50%;
-			transform: translateX(-50%);
 		}
 
 		@media screen and (min-width: '769px') and (max-width: '900px') {
@@ -510,7 +508,6 @@ main {
 			.aboutContent {
 				display: grid;
 				grid-template-columns: repeat(3, 1fr);
-				align-items: flex-start;
 				column-gap: 50px;
 				margin-bottom: 2rem;
 
@@ -563,7 +560,7 @@ main {
 
 					@media screen and (min-width: '601px') and (max-width: '768px') {
 						padding: 1.5rem;
-						width: 90%;
+						width: 85%;
 						justify-self: center;
 					}
 
@@ -602,6 +599,10 @@ main {
 					}
 
 					.cardContent {
+						margin-bottom: 4rem;
+						@media screen and (min-width: '315px') and (max-width: '900px') {
+							margin-bottom: 0;
+						}
 						p {
 							color: $black;
 							font-family: montserrat;
@@ -624,10 +625,16 @@ main {
 					}
 
 					i {
-						font-size: 4rem;
+						position: absolute;
+						bottom: 1rem;
+						font-size: 4.5rem;
 						align-self: flex-end;
 						color: rgba(0, 0, 0, 0.04);
-						margin-top: 2rem;
+
+						@media screen and (min-width: '315px') and (max-width: '900px') {
+							position: relative;
+							bottom: initial;
+						}
 
 						@media screen and (min-width: '481px') and (max-width: '600px') {
 							font-size: 3rem;

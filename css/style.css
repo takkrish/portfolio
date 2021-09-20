@@ -126,6 +126,7 @@ header.active {
 }
 
 header nav {
+  margin: 0 auto;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -143,10 +144,6 @@ header nav {
 @media screen and (min-width: 1440px) {
   header nav {
     width: 1440px;
-    position: relative;
-    left: 50%;
-    -webkit-transform: translateX(-50%);
-            transform: translateX(-50%);
   }
 }
 
@@ -663,9 +660,6 @@ main section#about .aboutContent {
   display: grid;
   -ms-grid-columns: (1fr)[3];
       grid-template-columns: repeat(3, 1fr);
-  -webkit-box-align: start;
-      -ms-flex-align: start;
-          align-items: flex-start;
   -webkit-column-gap: 50px;
           column-gap: 50px;
   margin-bottom: 2rem;
@@ -748,7 +742,7 @@ main section#about .aboutContent article {
 @media screen and (min-width: 601px) and (max-width: 768px) {
   main section#about .aboutContent article {
     padding: 1.5rem;
-    width: 90%;
+    width: 85%;
     -ms-grid-column-align: center;
         justify-self: center;
   }
@@ -801,6 +795,16 @@ main section#about .aboutContent article h2 {
   }
 }
 
+main section#about .aboutContent article .cardContent {
+  margin-bottom: 4rem;
+}
+
+@media screen and (min-width: 315px) and (max-width: 900px) {
+  main section#about .aboutContent article .cardContent {
+    margin-bottom: 0;
+  }
+}
+
 main section#about .aboutContent article .cardContent p {
   color: #111;
   font-family: montserrat;
@@ -826,11 +830,19 @@ main section#about .aboutContent article .cardContent p strong {
 }
 
 main section#about .aboutContent article i {
-  font-size: 4rem;
+  position: absolute;
+  bottom: 1rem;
+  font-size: 4.5rem;
   -ms-flex-item-align: end;
       align-self: flex-end;
   color: rgba(0, 0, 0, 0.04);
-  margin-top: 2rem;
+}
+
+@media screen and (min-width: 315px) and (max-width: 900px) {
+  main section#about .aboutContent article i {
+    position: relative;
+    bottom: initial;
+  }
 }
 
 @media screen and (min-width: 481px) and (max-width: 600px) {
